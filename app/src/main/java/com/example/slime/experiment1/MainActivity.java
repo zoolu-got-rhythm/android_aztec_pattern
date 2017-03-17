@@ -34,4 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    protected void onDestroy(Bundle s){
+        Toast.makeText(this, "hope you come back!", Toast.LENGTH_LONG).show();
+    }
 }
