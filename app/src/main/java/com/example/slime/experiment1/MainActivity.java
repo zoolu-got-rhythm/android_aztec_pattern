@@ -23,55 +23,14 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int n = 0;
-    private Canvas c;
-    public Bitmap b;
-    private Paint p;
+    private CustomView cv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        p.setColor(Color.BLACK);
-
-        final MyTimer timer;
-        timer = new MyTimer(new Stuff());
-        timer.start();
-        timer.stop();
-        b = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
-        c = new Canvas(b);
-
-        new this.
-
-        Button myBtn = (Button) findViewById(R.id.myBtn);
-        myBtn.setWidth(2);
-//        myBtn.
-
-        class MyCanvas extends View{
-
-            private Point co = new Point(1,1);
-
-            public MyCanvas(Context context) {
-                super(context);
-            }
-
-            public void update(){
-                this.co.x++;
-                this.co.y++;
-            }
-
-            @Override
-            protected void onDraw(Canvas canvas) {
-                super.onDraw(canvas);
-                invalidate();
-                canvas.drawLine(this.co.x, this.co.y, this.co.x++, this.co.y++, new Paint());
-                update();
-            }
-        }
-
-
-
+//        setContentView(R.layout.activity_main);
+        this.cv = new CustomView(this);
+        setContentView(this.cv);
 
 
     }
