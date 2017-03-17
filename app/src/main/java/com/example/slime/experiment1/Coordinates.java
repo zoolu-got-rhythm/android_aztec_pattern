@@ -13,8 +13,12 @@ public class Coordinates{
         this.y = y;
     }
 
+    public Coordinates(Coordinates co){
+        this(co.getX(), co.getY());
+    }
+
     public Coordinates plot(Coordinates other){
-        return new Coordinates(this.getX() + other.getX(), this.getX() + other.getY());
+        return new Coordinates(this.getX() + other.getX(), this.getY() + other.getY());
     }
 
     public void move(int x, int y){

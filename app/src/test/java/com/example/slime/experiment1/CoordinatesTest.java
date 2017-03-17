@@ -3,6 +3,8 @@ package com.example.slime.experiment1;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -21,6 +23,10 @@ public class CoordinatesTest {
         int x = newC.getX();
         int y = newC.getY();
         assertEquals(20, x + y);
+        newC = this.c.plot(new Coordinates(0,-1));
+        x = newC.getX();
+        y = newC.getY();
+        assertEquals(9, x + y);
         assertNotEquals(this.c, newC); // make sure object reference are different
     }
 
@@ -33,8 +39,19 @@ public class CoordinatesTest {
     }
 
     @Test
-    public void testGetX() throws Exception {
+    public void testPlotMultiple() throws Exception {
+        ArrayList<Coordinates> cos = new ArrayList<>();
+        cos.add(new Coordinates(5,5));
 
+        for(int i = 0; i <= 5; i++){
+            Coordinates prev = new Coordinates(cos.get(cos.size() - 1));
+            cos.add(prev.plot(new Coordinates(0, -1)));
+        }
+
+        for(Coordinates co : cos){
+            System.out.println(co.getX() + ", " + co.getY());
+            System.out.println(co);
+        }
     }
 
     @Test

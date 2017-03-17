@@ -18,11 +18,13 @@ class CustomView extends View {
     private Boolean toggle = false;
     private float i = 0;
     private MySquare square;
+    private Aztec aztec;
 
     public CustomView(Context context) {
         super(context);
         this.p = new Paint();
         p.setColor(Color.BLACK);
+        this.aztec = new Aztec(new Coordinates(100, 100));
         this.square = new MySquare(50, 100, 150, 200);
         Toast.makeText(context, "asdf", Toast.LENGTH_LONG).show();
     }
@@ -32,7 +34,7 @@ class CustomView extends View {
     }
 
     public void update(){
-       this.square.b = (int) Math.round((Math.random() * 200));
+       this.aztec.move();
 
     }
 
@@ -40,8 +42,9 @@ class CustomView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         invalidate();
-
-        canvas.drawRect(square.l, square.t, square.r, square.b, this.p);
+        for(Coordinates co : this.aztec.getCurrentPattern()){
+            canvas.drawRect(co.getY() + 20, co.getX() + 20, co.getY() + 40, co.getX() + 40, this.p);
+        }
         //canvas.drawColor(Color.BLACK);
         update();
     }

@@ -37,8 +37,9 @@ public class AztecTest {
     public void testCoordinates() throws Exception{
         assertEquals(1, this.pattern.getCurrentPattern().size());
         this.pattern.move();
-//        int x = this.pattern.getCurrentPattern().get(1).getX();
-//        int y = this.pattern.getCurrentPattern().get(1).getY();
+        int x = this.pattern.getCurrentPattern().get(0).getX();
+        int y = this.pattern.getCurrentPattern().get(0).getY();
+        assertEquals(10, x + y);
 
         //assertEquals(12, x + y);
 
