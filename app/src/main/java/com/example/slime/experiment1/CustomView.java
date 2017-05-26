@@ -5,7 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -34,9 +36,9 @@ class CustomView extends View {
         this.colors.add(Color.RED);
 
         // super.getMeasuredWidth()
-        this.aztec = new Aztec(new Coordinates(100, 100));
+        this.aztec = new Aztec(new Coordinates(300, 400));
         this.square = new MySquare(50, 100, 150, 200);
-        Toast.makeText(context, "asdf", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "HELLO, EARTHLING", Toast.LENGTH_LONG).show();
     }
 
     private void doToggle(){
@@ -45,7 +47,6 @@ class CustomView extends View {
 
     public void update(){
        this.aztec.move();
-
     }
 
     @Override
@@ -59,6 +60,12 @@ class CustomView extends View {
         }
         //canvas.drawColor(Color.BLACK);
         update();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        Toast.makeText(getContext(), "you touched the screen", Toast.LENGTH_SHORT).show();
+       return true;
     }
 
     private class MySquare{
